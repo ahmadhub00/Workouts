@@ -18,6 +18,7 @@
       },
       "edgeToEdgeEnabled": true,
       "package": "com.ahmadtaimur.chatapp"
+      
     },
     "web": {
       "bundler": "metro",
