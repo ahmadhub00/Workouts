@@ -1,5 +1,5 @@
 import { Slot } from "expo-router";
-import { ClerkProvider } from "@clerk/clerk-expo";
+import { ClerkLoaded, ClerkProvider } from "@clerk/clerk-expo";
 import { passkeys } from "@clerk/expo-passkeys";
 import { tokenCache } from "@/utils/cache";
 
@@ -14,7 +14,9 @@ export default function RootLayout() {
     publishableKey={publishableKey}
       tokenCache={tokenCache}
       __experimental_passkeys={passkeys}>
+        <ClerkLoaded>
     <Slot />
+    </ClerkLoaded>
     </ClerkProvider>
   );
 }
