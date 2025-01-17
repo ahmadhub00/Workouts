@@ -1,6 +1,6 @@
-import { View } from "react-native";
+import { View, Image, SafeAreaView } from "react-native";
 import {Text} from"@/components/Text";
-import { SafeAreaView } from "react-native-safe-area-context";
+
 
 export default function Index() {
   return (
@@ -11,7 +11,15 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Auth</Text>
+      <View style={{ gap: 20, alignItems: "center" }}>
+          <Image
+            source={require("@/assets/images/logo.png")}
+            style={{ width: 100, height: 100 }}
+          />
+          <Text style={{ fontSize: 32, fontWeight: "bold" }}>
+            Modern Chat App
+          </Text>
+        </View>
     </SafeAreaView>
   );
 }
