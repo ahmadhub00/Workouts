@@ -1,6 +1,6 @@
 import { Slot } from "expo-router";
 import { ClerkLoaded, ClerkProvider } from "@clerk/clerk-expo";
-import { passkeys } from "@clerk/expo-passkeys";
+/* import { passkeys } from "@clerk/expo-passkeys"; */
 import { tokenCache } from "@/utils/cache";
 import { StatusBar } from "react-native";
 import { DarkTheme, ThemeProvider } from "@react-navigation/native";
@@ -14,7 +14,7 @@ export default function RootLayout() {
     <ClerkProvider
     publishableKey={publishableKey}
       tokenCache={tokenCache}
-      __experimental_passkeys={passkeys}>
+     /*  __experimental_passkeys={passkeys} */>
         <ClerkLoaded>
         <ThemeProvider value={DarkTheme}>
           <Slot />
