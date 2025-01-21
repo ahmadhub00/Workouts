@@ -7,10 +7,10 @@ export default function Index() {
     <SafeAreaView
       style={{
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        
       }}
     >
+      <View style={{ flex:0.1}}/>
       <View style={{ gap: 20, alignItems: "center" }}>
           <Image
             source={require("@/assets/images/logo.png")}
@@ -19,8 +19,12 @@ export default function Index() {
           <Text style={{ fontSize: 32, fontWeight: "bold" }}>
             Modern Chat App
           </Text>
+          <Text > The best chat app</Text>
         </View>
-        <Button> Text</Button>
+        <Button style={{
+            marginBottom: 20,
+          }}
+        > Sign in with passkey</Button>
         <Button
           style={{
             flexDirection: "row",
