@@ -21,7 +21,7 @@ export default function Index() {
   const { user, isSignedIn } = useUser();
   const { signIn, setActive } = useSignIn();
   const [errors, setErrors] = React.useState<ClerkAPIError[]>([]);
-    const handleSignInWithPasskey =async () => {};
+  
   const handleSignInWithGoogle = React.useCallback(async () => {
     try {
       // Start the authentication process by calling `startSSOFlow()`
@@ -49,6 +49,16 @@ export default function Index() {
     }
   }, []);
 
+const handleSignInWithPasskey =async () => {};
+try {
+}
+} catch (err) {
+    // See https://clerk.com/docs/custom-flows/error-handling
+      // for more info on error handling
+      if (isClerkAPIResponseError(err)) setErrors(err.errors);
+      console.error(JSON.stringify(err, null, 2));
+    }
+  }, []);
 
   return (
     <SafeAreaView
@@ -72,12 +82,17 @@ export default function Index() {
             Modern Chat App
           </Text>
           <Text > The best chat app</Text>
+
+           {errors.map((error) => (
+            <Text key={error.code}>{error.code}</Text>
+          ))}
+
         </View>
         <View style={{ flex: 1 }} />
         <Button style={{
           marginBottom: 20,
         }}
-        onPress={handleSignInwithPasskey}
+        onPress={handleSignInWithPasskey}
         > Sign in with passkey</Button>
         <Button
           style={{
