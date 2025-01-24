@@ -1,7 +1,7 @@
-import { useUser } from "@clerk/clerk-expo";
+/* import { useUser } from "@clerk/clerk-expo";
 import { Redirect, Stack } from "expo-router";
 
-export default function RootLayout() {
+export default function AuthLayout() {
   const { isSignedIn } = useUser();
 
   if (isSignedIn) {
@@ -17,3 +17,27 @@ export default function RootLayout() {
   );
 }
   
+ */
+import { useUser } from "@clerk/clerk-expo";
+import { Redirect, Stack } from "expo-router";
+
+export default function AuthLayout() {
+  const { isSignedIn, isLoaded } = useUser();
+  
+  if (!isLoaded) {
+    return null;
+  }
+  
+  if (!isSignedIn) {
+    return <Redirect href="/login" />;
+  }
+
+  return (
+    <Stack>
+      <Stack.Screen 
+        name="index" 
+        options={{ headerShown: false }}
+      />
+    </Stack>
+  );
+}

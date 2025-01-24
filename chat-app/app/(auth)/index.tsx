@@ -1,4 +1,4 @@
-import * as React from "react";
+/* import * as React from "react";
 import { View, Image, SafeAreaView } from "react-native";
 
 import * as WebBrowser from "expo-web-browser";
@@ -21,7 +21,7 @@ export default function Index() {
   const { user, isSignedIn } = useUser();
   const { signIn, setActive } = useSignIn();
   const [errors, setErrors] = React.useState<ClerkAPIError[]>([]);
-  
+
   const handleSignInWithGoogle = React.useCallback(async () => {
     try {
       // Start the authentication process by calling `startSSOFlow()`
@@ -49,29 +49,43 @@ export default function Index() {
     }
   }, []);
 
-const handleSignInWithPasskey =async () => {};
-try {
-}
-} catch (err) {
-    // See https://clerk.com/docs/custom-flows/error-handling
-      // for more info on error handling
-      if (isClerkAPIResponseError(err)) setErrors(err.errors);
-      console.error(JSON.stringify(err, null, 2));
-    }
-  }, []);
+ /*  const handleSignInWithPasskey = async () => {
+    try {
+      const signInAttempt = await signIn?.authenticateWithPasskey({
+        flow: "discoverable",
+      });
 
-  return (
+      if (signInAttempt?.status === "complete") {
+        if (setActive !== undefined) {
+          await setActive({ session: signInAttempt.createdSessionId });
+        }
+      } else {
+        
+        console.error(JSON.stringify(signInAttempt, null, 2));
+    } 
+  } catch (error) {
+      if (isClerkAPIResponseError(error)) {
+        setErrors(error.errors);
+      } else {
+        console.error(error);
+      }
+    }
+  }; */
+
+  /* return (
     <SafeAreaView
       style={{
         flex: 1,
-      }}>
+      }}
+    >
       <View
         style={{
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
           padding: 16,
-        }}>
+        }}
+      >
         <View style={{ flex: 0.1 }} />
         <View style={{ gap: 20, alignItems: "center" }}>
           <Image
@@ -81,20 +95,25 @@ try {
           <Text style={{ fontSize: 32, fontWeight: "bold" }}>
             Modern Chat App
           </Text>
-          <Text > The best chat app</Text>
+          <Text> The best chat app</Text>
 
-           {errors.map((error) => (
+          {errors.map((error) => (
             <Text key={error.code}>{error.code}</Text>
           ))}
-
         </View>
-        <View style={{ flex: 1 }} />
-        <Button style={{
-          marginBottom: 20,
-        }}
-        onPress={handleSignInWithPasskey}
-        > Sign in with passkey</Button>
-        <Button
+        <View style={{ flex: 1 }} /> */
+        /* <Button
+          style={{
+            marginBottom: 20,
+          }}
+          onPress={handleSignInWithPasskey}
+        >
+           <Text style={{ color: "white", fontWeight: "500" }}>
+            Sign in with Passkey
+          </Text>
+          
+        </Button> */
+       /* <Button
           style={{
             flexDirection: "row",
             alignItems: "center",
@@ -112,7 +131,24 @@ try {
             Sign in with Google
           </Text>
         </Button>
-        </View>
+      </View>
     </SafeAreaView>
+  );
+}
+ */
+import { View } from "react-native";
+import { Text } from "@/components/Text";
+
+export default function Chat() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Text>Chat Screen - You're signed in!</Text>
+    </View>
   );
 }
