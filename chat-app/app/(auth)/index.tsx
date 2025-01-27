@@ -1,6 +1,5 @@
-/* import * as React from "react";
+import * as React from "react";
 import { View, Image, SafeAreaView } from "react-native";
-
 import * as WebBrowser from "expo-web-browser";
 import * as AuthSession from "expo-auth-session";
 import {
@@ -12,16 +11,20 @@ import {
 import { ClerkAPIError } from "@clerk/types";
 import { Text } from "@/components/Text";
 import { Button } from "@/components/Button";
+import { Redirect } from "expo-router";
 
 // Handle any pending authentication sessions
 WebBrowser.maybeCompleteAuthSession();
 
 export default function Index() {
   const { startSSOFlow } = useSSO();
-  const { user, isSignedIn } = useUser();
+  const { user, isSignedIn, isLoaded } = useUser(); 
   const { signIn, setActive } = useSignIn();
   const [errors, setErrors] = React.useState<ClerkAPIError[]>([]);
 
+  if (isLoaded && isSignedIn) {
+    return <Redirect href="/(chat)" />;
+  }
   const handleSignInWithGoogle = React.useCallback(async () => {
     try {
       // Start the authentication process by calling `startSSOFlow()`
@@ -72,7 +75,7 @@ export default function Index() {
     }
   }; */
 
-  /* return (
+  return (
     <SafeAreaView
       style={{
         flex: 1,
@@ -101,8 +104,8 @@ export default function Index() {
             <Text key={error.code}>{error.code}</Text>
           ))}
         </View>
-        <View style={{ flex: 1 }} /> */
-        /* <Button
+        <View style={{ flex: 1 }} /> 
+         {/* <Button
           style={{
             marginBottom: 20,
           }}
@@ -112,8 +115,8 @@ export default function Index() {
             Sign in with Passkey
           </Text>
           
-        </Button> */
-       /* <Button
+        </Button> */} 
+        <Button
           style={{
             flexDirection: "row",
             alignItems: "center",
@@ -135,20 +138,4 @@ export default function Index() {
     </SafeAreaView>
   );
 }
- */
-import { View } from "react-native";
-import { Text } from "@/components/Text";
-
-export default function Chat() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Chat Screen - You're signed in!</Text>
-    </View>
-  );
-}
+ 

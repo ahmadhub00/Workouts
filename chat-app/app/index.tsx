@@ -11,8 +11,8 @@ export default function Index() {
   
   // Route based on auth status
   if (isSignedIn) {
-    return <Redirect href="/(auth)" />;
+    return <Redirect href="/(chat)" />;
   } else {
-    return <Redirect href="/login" />;
+    return <Redirect href="/(auth)" />;
   }
 }
