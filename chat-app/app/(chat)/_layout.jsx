@@ -1,10 +1,10 @@
 import { useUser } from "@clerk/clerk-expo";
-import { Redirect, Stack } from "expo-router";
+import { Link,Redirect, Stack } from "expo-router";
 import {Image} from "react-native";
 
 export default function ChatLayout() {
    const { isSignedIn, isLoaded } = useUser();
-  const {user } = useUser();
+   const {user } = useUser();
   // Wait for auth to load
   if (!isLoaded) {
     return null;
@@ -27,14 +27,31 @@ export default function ChatLayout() {
               />
             </Link>
           ),
-          headerRight: () => (
+          /* headerRight: () => (
             <Link href="/new-room">
               <IconSymbol name="plus" />
             </Link>
-          ),
+          ), */
         }}
       />
-    <Stack.Screen name="profile" options={{ headerShown: false }} />
+    <Stack.Screen name="profile" 
+    options={{ presentation: "modal",
+          headerTitle: "New Chat Room",
+          /* headerLeft: () => (
+            <Link href="/" dismissTo>
+              <IconSymbol name="chevron.left" />
+            </Link>
+          ), */
+           }} />
+      <Stack.Screen name="new-room" 
+    options={{ presentation: "modal",
+          headerTitle: "New Chat Room",
+          /* headerLeft: () => (
+            <Link href="/" dismissTo>
+              <IconSymbol name="chevron.left" />
+            </Link>
+          ), */
+           }} />
    </Stack>
   );
 }
