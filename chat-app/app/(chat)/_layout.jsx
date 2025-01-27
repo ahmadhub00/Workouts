@@ -1,6 +1,8 @@
 import { useUser } from "@clerk/clerk-expo";
 import { Link,Redirect, Stack } from "expo-router";
 import {Image} from "react-native";
+import { IconSymbol } from "../../components/IconSymbol.ios";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function ChatLayout() {
    const { isSignedIn, isLoaded } = useUser();
@@ -27,16 +29,16 @@ export default function ChatLayout() {
               />
             </Link>
           ),
-          /* headerRight: () => (
+           headerRight: () => (
             <Link href="/new-room">
-              <IconSymbol name="plus" />
+                <Ionicons name="add" size={28} color="black" />  
             </Link>
-          ), */
+          ), 
         }}
       />
     <Stack.Screen name="profile" 
     options={{ presentation: "modal",
-          headerTitle: "New Chat Room",
+          /* headerTitle: "New Chat Room", */
           /* headerLeft: () => (
             <Link href="/" dismissTo>
               <IconSymbol name="chevron.left" />
@@ -45,12 +47,12 @@ export default function ChatLayout() {
            }} />
       <Stack.Screen name="new-room" 
     options={{ presentation: "modal",
-          headerTitle: "New Chat Room",
-          /* headerLeft: () => (
-            <Link href="/" dismissTo>
+      headerTitle: "New Chat Room",
+           headerLeft: () => (
+            <Link href={"/"} dismissTo>
               <IconSymbol name="chevron.left" />
             </Link>
-          ), */
+           ),
            }} />
    </Stack>
   );
