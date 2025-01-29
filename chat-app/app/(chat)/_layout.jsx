@@ -1,12 +1,12 @@
 import { useUser } from "@clerk/clerk-expo";
-import { Link,Redirect, Stack } from "expo-router";
-import {Image} from "react-native";
+import { Link, Redirect, Stack } from "expo-router";
+import { Image } from "react-native";
 import { IconSymbol } from "../../components/IconSymbol.ios";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function ChatLayout() {
-   const { isSignedIn, isLoaded } = useUser();
-   const {user } = useUser();
+  const { isSignedIn, isLoaded } = useUser();
+  const { user } = useUser();
   // Wait for auth to load
   if (!isLoaded) {
     return null;
@@ -15,13 +15,15 @@ export default function ChatLayout() {
   if (!isSignedIn) {
     return <Redirect href="/(auth)" />;
   }
-  
-  return ( 
-  <Stack >
-    <Stack.Screen name="index"
-     options={{ headerLargeTitle: true,
-      headerTitle: "Chat Rooms",
-      headerLeft: () => (
+
+  return (
+    <Stack>
+      <Stack.Screen
+        name="index"
+        options={{
+          headerLargeTitle: true,
+          headerTitle: "Chat Rooms",
+          headerLeft: () => (
             <Link href="/profile">
               <Image
                 source={{ uri: user?.imageUrl }}
@@ -29,31 +31,49 @@ export default function ChatLayout() {
               />
             </Link>
           ),
-           headerRight: () => (
+          headerRight: () => (
             <Link href="/new-room">
-                <Ionicons name="add" size={28} color="black" />  
+              <IconSymbol name="plus" />
+            </Link>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="profile"
+        options={{
+          presentation: "modal",
+           headerTitle: "Profile", 
+           headerLeft: () => (
+            <Link href="/" dismissTo>
+              <IconSymbol name="chevron.left" />
             </Link>
           ), 
         }}
       />
-    <Stack.Screen name="profile" 
-    options={{ presentation: "modal",
-          /* headerTitle: "New Chat Room", */
-          /* headerLeft: () => (
-            <Link href="/" dismissTo>
-              <IconSymbol name="chevron.left" />
-            </Link>
-          ), */
-           }} />
-      <Stack.Screen name="new-room" 
-    options={{ presentation: "modal",
-      headerTitle: "New Chat Room",
-           headerLeft: () => (
+      <Stack.Screen
+        name="new-room"
+        options={{
+          presentation: "modal",
+          headerTitle: "New Chat Room",
+          headerLeft: () => (
             <Link href={"/"} dismissTo>
               <IconSymbol name="chevron.left" />
             </Link>
-           ),
-           }} />
-   </Stack>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="settings/[chat]"
+        options={{
+          presentation: "modal",
+          headerTitle: "New Chat Room",
+          headerLeft: () => (
+            <Link href={"/"} dismissTo>
+              <IconSymbol name="chevron.left" />
+            </Link>
+          ),
+        }}
+      />
+    </Stack>
   );
 }
