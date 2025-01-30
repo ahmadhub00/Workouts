@@ -10,8 +10,8 @@ import {
   View,
 } from "react-native";
 import { Text } from "@/components/Text";
-import { Message, ChatRoom } from "@/utils/types";
-import { database, appwriteConfig, client } from "@/utils/appwrite";
+/* import { Message, ChatRoom } from "@/utils/types";
+import { database, appwriteConfig, client } from "@/utils/appwrite"; */
 import { ID, Query } from "react-native-appwrite";
 import { LegendList } from "@legendapp/list";
 import { SafeAreaView } from "react-native-safe-area-context";

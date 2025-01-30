@@ -63,15 +63,19 @@ export default function ChatLayout() {
         }}
       />
       <Stack.Screen
+        name="[chat]"
+        options={{
+          /* presentation: "modal", */
+          headerTitle: "",
+          
+        }}
+      />
+      <Stack.Screen
         name="settings/[chat]"
         options={{
-          presentation: "modal",
-          headerTitle: "New Chat Room",
-          headerLeft: () => (
-            <Link href={"/"} dismissTo>
-              <IconSymbol name="chevron.left" />
-            </Link>
-          ),
+           presentation: "modal", 
+          headerTitle: "Room Settings",
+          
         }}
       />
     </Stack>
